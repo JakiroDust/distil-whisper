@@ -424,7 +424,7 @@ def main():
         kwargs_handlers=[kwargs],
     )
 
-    accelerator.init_trackers(project_name=data_args.wandb_project)
+    #accelerator.init_trackers(project_name=data_args.wandb_project)
 
     # 3. Set-up basic logging
     # Create one log on every process with the configuration for debugging
