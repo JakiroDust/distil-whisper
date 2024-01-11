@@ -433,9 +433,6 @@ def main():
         datefmt="%m/%d/%Y %H:%M:%S",
         level=logging.INFO,
     )
-    raise ValueError(
-       f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}\ndistributed training: {training_args.parallel_mode.value == 'distributed'}, 16-bits training: {training_args.fp16}"
-        )
     # Log a small summary on each proces
     logger.warning(
         f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}, "
