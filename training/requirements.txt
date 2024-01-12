@@ -1,5 +1,5 @@
-torch>=1.10
-transformers>=4.35.1
+torch>=2.11
+transformers>=4.36
 datasets[audio]>=2.14.7
 accelerate>=0.24.1
 jiwer
@@ -7,3 +7,5 @@ evaluate>=0.4.1
 wandb
 tensorboard
 nltk
+tensorflow==2.12
+tensorflow-probability==0.20.0
