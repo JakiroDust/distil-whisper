@@ -363,28 +363,28 @@ def log_pred(
 ):
     """Helper function to log target/predicted transcriptions to weights and biases (wandb)."""
     if accelerator.is_main_process:
-        wandb_tracker = accelerator.get_tracker("wandb")
+        #wandb_tracker = accelerator.get_tracker("wandb")
         # pretty name for split
         prefix = prefix.replace("/", "-")
 
         # convert str data to a wandb compatible format
         str_data = [[label_str[i], pred_str[i], norm_label_str[i], norm_pred_str[i]] for i in range(len(pred_str))]
         # log as a table with the appropriate headers
-        wandb_tracker.log_table(
-            table_name=f"{prefix}/all_predictions",
-            columns=["Target", "Pred", "Norm Target", "Norm Pred"],
-            data=str_data[:num_lines],
-        )
+        #wandb_tracker.log_table(
+        #    table_name=f"{prefix}/all_predictions",
+        #    columns=["Target", "Pred", "Norm Target", "Norm Pred"],
+        #    data=str_data[:num_lines],
+        #)
 
         # log incorrect normalised predictions
         str_data = np.asarray(str_data)
         str_data_incorrect = str_data[str_data[:, -2] != str_data[:, -1]]
         # log as a table with the appropriate headers
-        wandb_tracker.log_table(
-            table_name=f"{prefix}/incorrect_predictions",
-            columns=["Target", "Pred", "Norm Target", "Norm Pred"],
-            data=str_data_incorrect[:num_lines],
-        )
+        #wandb_tracker.log_table(
+        #    table_name=f"{prefix}/incorrect_predictions",
+        #    columns=["Target", "Pred", "Norm Target", "Norm Pred"],
+        #    data=str_data_incorrect[:num_lines],
+        #)
 
 
 def main():
@@ -424,7 +424,7 @@ def main():
         kwargs_handlers=[kwargs],
     )
 
-    #accelerator.init_trackers(project_name=data_args.wandb_project)
+    accelerator.init_trackers(project_name=data_args.wandb_project)
 
     # 3. Set-up basic logging
     # Create one log on every process with the configuration for debugging
